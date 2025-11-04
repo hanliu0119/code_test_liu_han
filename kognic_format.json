@@ -1,0 +1,223 @@
+{
+  "certainty": "sure",
+  "shapeProperties": {
+    "11206831-2964-487b-a24b-abfc55f82013": {
+      "@all": {
+        "ObjectType": "Car",
+        "Unclear": false,
+        "class": "Vehicle"
+      }
+    },
+    "2ef8a63f-37a9-488c-a7c7-b36d11eb19a7": {
+      "@all": {
+        "ObjectType": "Car",
+        "Unclear": false,
+        "class": "Vehicle"
+      }
+    },
+    "4688d305-b235-4021-bfd8-af93abc71ae5": {
+      "@all": {
+        "Unclear": true,
+        "class": "Animal"
+      }
+    },
+    "6e7c7e4c-10a1-49a1-8c40-a97814dbdc1a": {
+      "@all": {
+        "class": "LicensePlate"
+      }
+    },
+    "9610f0ef-185f-41c6-a500-db0d568a8feb": {
+      "@all": {
+        "Unclear": true,
+        "class": "Vehicle"
+      }
+    }
+  },
+  "shapes": {
+    "CAM": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "geometry": {
+            "coordinates": {
+              "maxX": {
+                "coordinates": [
+                  324.02301025390625,
+                  594.9812622070312
+                ]
+              },
+              "maxY": {
+                "coordinates": [
+                  253.24899291992188,
+                  628.365234375
+                ]
+              },
+              "minX": {
+                "coordinates": [
+                  171.12440490722656,
+                  605.6641235351562
+                ]
+              },
+              "minY": {
+                "coordinates": [
+                  253.9166717529297,
+                  549.5790405273438
+                ]
+              }
+            },
+            "type": "ExtremePointBox"
+          },
+          "id": "9610f0ef-185f-41c6-a500-db0d568a8feb",
+          "properties": {
+            "@timestamp": 0
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": {
+              "maxX": {
+                "coordinates": [
+                  645.1768798828125,
+                  671.0967407226562
+                ]
+              },
+              "maxY": {
+                "coordinates": [
+                  467.5741271972656,
+                  764.5718994140625
+                ]
+              },
+              "minX": {
+                "coordinates": [
+                  334.0382080078125,
+                  658.4108276367188
+                ]
+              },
+              "minY": {
+                "coordinates": [
+                  496.2843322753906,
+                  566.938720703125
+                ]
+              }
+            },
+            "type": "ExtremePointBox"
+          },
+          "id": "11206831-2964-487b-a24b-abfc55f82013",
+          "properties": {
+            "@timestamp": 0
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": {
+              "maxX": {
+                "coordinates": [
+                  754.6763305664062,
+                  546.9083251953125
+                ]
+              },
+              "maxY": {
+                "coordinates": [
+                  721.2923583984375,
+                  572.9478759765625
+                ]
+              },
+              "minX": {
+                "coordinates": [
+                  691.9144287109375,
+                  548.2437133789062
+                ]
+              },
+              "minY": {
+                "coordinates": [
+                  721.2923583984375,
+                  516.195068359375
+                ]
+              }
+            },
+            "type": "ExtremePointBox"
+          },
+          "id": "2ef8a63f-37a9-488c-a7c7-b36d11eb19a7",
+          "properties": {
+            "@timestamp": 0
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": {
+              "maxX": {
+                "coordinates": [
+                  724.3621826171875,
+                  554.1156616210938
+                ]
+              },
+              "maxY": {
+                "coordinates": [
+                  718.6283569335938,
+                  557.4492797851562
+                ]
+              },
+              "minX": {
+                "coordinates": [
+                  713.8279418945312,
+                  553.7156372070312
+                ]
+              },
+              "minY": {
+                "coordinates": [
+                  718.2283325195312,
+                  551.0487670898438
+                ]
+              }
+            },
+            "type": "ExtremePointBox"
+          },
+          "id": "6e7c7e4c-10a1-49a1-8c40-a97814dbdc1a",
+          "properties": {
+            "@timestamp": 0
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": {
+              "maxX": {
+                "coordinates": [
+                  1002.4415283203125,
+                  533.6742553710938
+                ]
+              },
+              "maxY": {
+                "coordinates": [
+                  958.6953735351562,
+                  556.4222412109375
+                ]
+              },
+              "minX": {
+                "coordinates": [
+                  926.3232421875,
+                  536.2990112304688
+                ]
+              },
+              "minY": {
+                "coordinates": [
+                  954.3207397460938,
+                  507.4265441894531
+                ]
+              }
+            },
+            "type": "ExtremePointBox"
+          },
+          "id": "4688d305-b235-4021-bfd8-af93abc71ae5",
+          "properties": {
+            "@timestamp": 0
+          },
+          "type": "Feature"
+        }
+      ]
+    }
+  }
+}

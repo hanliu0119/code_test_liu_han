@@ -1,0 +1,150 @@
+{
+  "data": {
+    "openlabel": {
+      "objects": {
+        "11206831-2964-487b-a24b-abfc55f82013": {
+          "name": "11206831-2964-487b-a24b-abfc55f82013",
+          "type": "Vehicle"
+        },
+        "2ef8a63f-37a9-488c-a7c7-b36d11eb19a7": {
+          "name": "2ef8a63f-37a9-488c-a7c7-b36d11eb19a7",
+          "type": "Vehicle"
+        },
+        "4688d305-b235-4021-bfd8-af93abc71ae5": {
+          "name": "4688d305-b235-4021-bfd8-af93abc71ae5",
+          "type": "Animal"
+        },
+        "6e7c7e4c-10a1-49a1-8c40-a97814dbdc1a": {
+          "name": "6e7c7e4c-10a1-49a1-8c40-a97814dbdc1a",
+          "type": "LicensePlate"
+        },
+        "9610f0ef-185f-41c6-a500-db0d568a8feb": {
+          "name": "9610f0ef-185f-41c6-a500-db0d568a8feb",
+          "type": "Vehicle"
+        }
+      },
+      "frames": {
+        "0": {
+          "objects": {
+            "11206831-2964-487b-a24b-abfc55f82013": {
+              "object_data": {
+                "bbox": [
+                  {
+                    "name": "bbox-11206831",
+                    "stream": "CAM",
+                    "val": [
+                      489.6075439453125,
+                      665.7553100585938,
+                      311.138671875,
+                      197.6331787109375
+                    ]
+                  }
+                ],
+                "boolean": [
+                  {
+                    "name": "Unclear",
+                    "val": false
+                  }
+                ],
+                "text": [
+                  {
+                    "name": "ObjectType",
+                    "val": "Car"
+                  }
+                ]
+              }
+            },
+            "2ef8a63f-37a9-488c-a7c7-b36d11eb19a7": {
+              "object_data": {
+                "bbox": [
+                  {
+                    "name": "bbox-2ef8a63f",
+                    "stream": "CAM",
+                    "val": [
+                      723.2953796386719,
+                      544.5714721679688,
+                      62.76190185546875,
+                      56.7528076171875
+                    ]
+                  }
+                ],
+                "boolean": [
+                  {
+                    "name": "Unclear",
+                    "val": false
+                  }
+                ],
+                "text": [
+                  {
+                    "name": "ObjectType",
+                    "val": "Car"
+                  }
+                ]
+              }
+            },
+            "4688d305-b235-4021-bfd8-af93abc71ae5": {
+              "object_data": {
+                "bbox": [
+                  {
+                    "name": "bbox-4688d305",
+                    "stream": "CAM",
+                    "val": [
+                      964.3823852539062,
+                      531.9243927001953,
+                      76.1182861328125,
+                      48.995697021484375
+                    ]
+                  }
+                ],
+                "boolean": [
+                  {
+                    "name": "Unclear",
+                    "val": true
+                  }
+                ]
+              }
+            },
+            "6e7c7e4c-10a1-49a1-8c40-a97814dbdc1a": {
+              "object_data": {
+                "bbox": [
+                  {
+                    "name": "bbox-6e7c7e4c",
+                    "stream": "CAM",
+                    "val": [
+                      719.0950622558594,
+                      554.2490234375,
+                      10.53424072265625,
+                      6.4005126953125
+                    ]
+                  }
+                ]
+              }
+            },
+            "9610f0ef-185f-41c6-a500-db0d568a8feb": {
+              "object_data": {
+                "bbox": [
+                  {
+                    "name": "bbox-9610f0ef",
+                    "stream": "CAM",
+                    "val": [
+                      247.5737075805664,
+                      588.9721374511719,
+                      152.8986053466797,
+                      78.78619384765625
+                    ]
+                  }
+                ],
+                "boolean": [
+                  {
+                    "name": "Unclear",
+                    "val": true
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
