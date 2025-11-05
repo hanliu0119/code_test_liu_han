@@ -183,7 +183,7 @@ return root.model_dump()
 
 ## 4. Tests （REST API + Python）
 
-### 1️⃣ test_convert.py
+### 1️⃣ test_converter.py
 Run the example conversion directly through pytest:
 ```bash
 pytest -s -v tests/test_convert.py
@@ -197,8 +197,12 @@ pytest -s -v tests/test_convert.py
 You can test the API endpoint in two ways:
 
 **a. Using curl**
+Terminal Tab 1
 ```bash
 uvicorn api.app:app --reload
+```
+Terminal Tab 2
+```bash
 curl -X GET "http://127.0.0.1:8000/convert" \
   -H "Content-Type: application/json" \
   --data-binary @examples/kognic_format.json
