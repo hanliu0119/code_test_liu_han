@@ -63,3 +63,151 @@ Included is a HTML file with documentation regarding the ASAM OpenLabel format. 
 The finished assignment should be pushed to this github repository on a branch named `code_test_<yourname>`. In addition to all the neccessary code it should contain a README that describes:
 1. How to start the REST API locally
 2. How to install and use your python-library
+
+
+--------------------------------------------------------------------------------------
+
+## 1. Installation
+
+### Option A — Install locally
+```bash
+git clone https://github.com/hanliu0119/code_test_liu_han.git
+cd code_test_liu_han
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+### Option B — One-click setup
+If you prefer automation:
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+This script will create `.venv`, upgrade `pip`, and install all dependencies.
+
+---
+
+## 2. Project Structure
+
+```
+code_test_liu_han/
+├── annotation_converter/          # Core logic package
+│   ├── __init__.py                # Exports convert()
+│   ├── bbox.py                    # Converts ExtremePointBox → [cx, cy, w, h]
+│   ├── converter.py               # Main conversion pipeline (Kognic → OpenLABEL)
+│   ├── mapping.py                 # Constants and class mappings
+│   └── models.py                  # Pydantic data models for input/output schema
+│
+├── api/                           # REST API layer
+│   ├── __init__.py
+│   └── app.py                     # FastAPI app exposing /convert endpoint
+│
+├── examples/                      # Sample data and usage demo
+│   ├── kognic_format.json
+│   ├── open_label_format.json
+│   └── example_client_usage.py
+│
+├── tests/                         # Unit and API integration tests
+│   ├── test_converter.py
+│   └── test_api.py
+│
+├── setup.sh                       # Optional setup helper
+├── README.md
+├── pyproject.toml                 # Build metadata and dependencies
+└── .gitignore
+```
+
+---
+
+## 3. How the Conversion Works
+
+### Overview
+The `convert()` function transforms a Kognic-style annotation into an OpenLABEL-style annotation while keeping all semantic information unchanged.
+
+### Step-by-step Flow
+
+#### 1️⃣ Input Validation
+```python
+k = KognicAnnotation.model_validate(kognic)
+```
+- Uses Pydantic models to verify structure and types.
+- Maps `"class"` (reserved word) → `klass` via `Field(alias="class")`.
+
+#### 2️⃣ Build Global Object Definitions
+```python
+for obj_id, prop_wrapper in k.shapeProperties.items():
+    sp = prop_wrapper.get("@all")
+    klass = sp.klass or ""
+    mapped = CLASS_MAP.get(klass, klass or "Unknown")
+    objects[obj_id] = ObjectDef(name=obj_id, type=mapped)
+```
+- Reads each object's class/type.  
+- Uses `CLASS_MAP` to standardize class names (`Vehicle`, `Animal`, `LicensePlate`).  
+- Stores all objects under `openlabel.objects`.
+
+#### 3️⃣ Group Features by Timestamp
+```python
+ts = str(feature.properties.get(FRAME_KEY, 0))
+frame_objects[ts][obj_id] = ...
+```
+- Groups detections into `frames` using `"@timestamp"` as frame key.
+
+#### 4️⃣ Convert Coordinates
+```python
+cx, cy, w, h = extreme_box_to_cxcywh(feature.geometry.coordinates.model_dump())
+```
+- From `bbox.py`: converts Kognic “ExtremePointBox” → OpenLABEL `[cx, cy, w, h]`.
+
+#### 5️⃣ Attach Optional Attributes
+```python
+if prop.Unclear is not None:
+    booleans.append(BooleanEntry(name=UNCLEAR_KEY, val=prop.Unclear))
+if prop.ObjectType is not None:
+    texts.append(TextEntry(name=OBJECT_TYPE_KEY, val=prop.ObjectType))
+```
+- Adds `boolean` and `text` attributes if present (e.g., `"Unclear"`, `"ObjectType"`).
+
+#### 6️⃣ Assemble Final OpenLABEL Output
+```python
+root = OpenLabelRoot(
+    data={"openlabel": OpenLabel(objects=objects, frames=frames)}
+)
+return root.model_dump()
+```
+- Produces a dict identical in structure to `examples/open_label_format.json`.
+
+---
+
+## 4. Tests （REST API + Python）
+
+### 1️⃣ test_convert.py
+Run the example conversion directly through pytest:
+```bash
+pytest -s -v tests/test_convert.py
+```
+- `-s` allows `print()` output to appear in the console.  
+- Verifies that the example file in `examples/` can be successfully converted end-to-end.
+
+---
+
+### 2️⃣ test_api.py
+You can test the API endpoint in two ways:
+
+**a. Using curl**
+```bash
+uvicorn api.app:app --reload
+curl -X GET "http://127.0.0.1:8000/convert" \
+  -H "Content-Type: application/json" \
+  --data-binary @examples/kognic_format.json
+```
+- Starts the FastAPI server locally and sends a GET request with the sample input.  
+- Confirms the REST interface responds correctly with OpenLABEL-format output.
+
+**b. Using pytest**
+```bash
+pytest -v tests/test_api.py
+```
+- Runs an automated integration test via FastAPI’s `TestClient`.  
+- Checks that `/convert` returns status code 200 and a valid JSON structure.
