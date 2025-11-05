@@ -75,6 +75,7 @@ git clone https://github.com/hanliu0119/code_test_liu_han.git
 cd code_test_liu_han
 python3 -m venv .venv
 source .venv/bin/activate
+pip install --upgrade pip setuptools wheel
 pip install -e ".[dev]"
 ```
 
