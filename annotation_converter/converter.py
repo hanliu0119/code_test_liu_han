@@ -77,4 +77,4 @@ def convert(kognic: Dict[str, Any]) -> Dict[str, Any]:
             )
         }
     )
-    return root.model_dump()
+    return root.model_dump(exclude_none=True)
