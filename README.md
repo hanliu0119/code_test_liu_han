@@ -196,6 +196,7 @@ pytest -s -v tests/test_convert.py
 You can test the API endpoint in two ways:
 
 **a. Using curl**
+
 Terminal Tab 1
 ```bash
 uvicorn api.app:app --reload
