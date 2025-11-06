@@ -107,8 +107,7 @@ code_test_liu_han/
 │
 ├── examples/                      # Sample data and usage demo
 │   ├── kognic_format.json
-│   ├── open_label_format.json
-│   └── example_client_usage.py
+│   └──  open_label_format.json
 │
 ├── tests/                         # Unit and API integration tests
 │   ├── test_converter.py
